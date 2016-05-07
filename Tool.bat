@@ -560,7 +560,7 @@ echo 3) Do not (go back)
 echo.
 set /p bootfrom=Enter a choice:  
 if /i '%bootfrom%'=='1' goto bootrecovery
-if /i '%bootfrom%"=='2' goto bootboot
+if /i '%bootfrom%'=='2' goto bootboot
 if /i '%bootfrom%'=='3' goto start
 echo Error occured, please retry...
 pause>nul
