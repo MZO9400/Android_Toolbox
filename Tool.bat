@@ -307,7 +307,7 @@ goto start
 ---------------------------------------------------
 
 :devicecheck
-files\adb devices
+files\adb devices -l
 echo.
 @echo If you see random numbers and letters and got "device" on right side, it means that you're OK to proceed
 pause>nul
