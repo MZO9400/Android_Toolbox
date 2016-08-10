@@ -710,7 +710,7 @@ echo.
 echo.
 pause>nul
 echo Proceeding now...
-timeout /t 01>nul
+timeout /t 01>nul /NoBreak
 color 0E
 echo.
 echo UNROOTING now!
@@ -766,9 +766,9 @@ goto owncmd
 cls
 echo Deleting lockscreens now!
 echo ...
-timeout /t 02 >nul
+timeout /t 02 >nul /NoBreak
 files\adb shell "su -c 'rm /data/system/*.key'">nul
-timeout /t 02 >nul
+timeout /t 02 >nul /NoBreak
 echo Done!
 echo.
 echo Press any key to reboot
@@ -794,29 +794,29 @@ cls
 echo Status:
 echo Rebooting into fastboot mode to wipe
 files\adb reboot bootloader
-timeout /t 01 >nul
+timeout /t 01 >nul /NoBreak
 cls
 echo Status:
 echo DONE.
-timeout /t 01 >nul
+timeout /t 01 >nul /NoBreak
 cls
 echo Status:
 echo Wiping cache userdata and internal SD
 files\fastboot -w
-timeout /t 01 >nul
+timeout /t 01 >nul /NoBreak
 cls
 echo Status:
 echo DONE
-timeout /t 01 >nul
+timeout /t 01 >nul /NoBreak
 cls
 echo Status:
 echo Wiping system
 files\fastboot erase system
-timeout /t 04 >nul
+timeout /t 04 >nul /NoBreak
 cls
 echo Status:
 echo DONE
-timeout /t 01 >nul
+timeout /t 01 >nul /NoBreak
 cls
 echo ALL DONE! Please boot into recovery and flash the packages from SD
 
@@ -828,7 +828,7 @@ set /p toflash=Enter zip's location in /SDCARD/:
 echo.
 echo Applying update from SDCARD
 echo ...
-timeout /t 01 >nul
+timeout /t 01 >nul /NoBreak
 echo.
 echo Rewriting commandline
 echo.
@@ -846,16 +846,16 @@ goto start
 cls
 echo Status:
 echo        Starting flash
-timeout /t 02>nul
+timeout /t 02>nul /NoBreak
 cls
 echo Status:
 echo        Backing up old boot animation
 files\adb pull /system/media/bootanimation.zip bootanimation-backup.zip>nul
-timeout /t 01>nul
+timeout /t 01>nul /NoBreak
 cls
 echo Status:
 echo        Done
-timeout /t 01>nul
+timeout /t 01>nul /NoBreak
 cls
 echo Status:
 echo        Flashing new boot animation...
@@ -865,11 +865,11 @@ files\adb shell "su -c 'busybox rm /system/media/bootanimation.zip'"
 files\adb shell "su -c 'busybox cp /sdcard/ba.zip /system/media/bootanimation.zip'"
 files\adb shell "su -c 'busybox chmod 0644 /system/media/bootanimation.zip'"
 files\adb shell "su -c 'busybox rm /sdcard/ba.zip'"
-timeout /t 02>nul
+timeout /t 02>nul /NoBreak
 cls
 echo Status:
 echo        Done
-timeout /t 01>nul
+timeout /t 01>nul /NoBreak
 goto start
 
 ---------------------------------------------------
